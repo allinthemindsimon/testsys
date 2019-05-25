@@ -18,6 +18,7 @@ Route::get('/cow/create', 'CowController@create');
 Route::get('/cow/{id}/edit', 'CowController@edit');
 Route::get('/milk', 'MilkController@index');
 
+Route::post('/milk/{id}/store', 'MilkController@store');
 Route::post('/cow/{id}/update', 'CowController@update');
 Route::post('/cow/store', 'CowController@store');
 // Route::get('/invoice/{id}/invoice', 'InvoiceController@invoice');

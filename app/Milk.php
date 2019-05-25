@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Milk extends Model
 {
     protected $fillable = [
-        'amount',
+        'amount_litres',
         'cow_id'
     ];
 }

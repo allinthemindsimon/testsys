@@ -13,9 +13,9 @@ class CreateMilkTable extends Migration
      */
     public function up()
     {
-        Schema::create('milk', function (Blueprint $table) {
+        Schema::create('milks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->float('amount_ml', 10, 3)->unsigned()->nullable();
+            $table->float('amount_litres', 10, 3)->unsigned()->nullable();
             $table->integer('cow_id')->unsigned()->nullable();
             $table->foreign('cow_id')->references('id')->on('cows'); //there is no need to call the onDelete option
             $table->timestamps();
@@ -29,6 +29,6 @@ class CreateMilkTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('milk');
+        Schema::dropIfExists('milks');
     }
 }

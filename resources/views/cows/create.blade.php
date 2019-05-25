@@ -2,16 +2,16 @@
 
 @section("content")
 <style>
-	#message {
+	#cowmessage {
 		color:green;
 		font-size: 1.5em;
 	}
 </style>
 
 <hr>
-@if(session()->has('message'))
-	<div class="is-primary" id="message">
-		{{ session()->get('message') }}
+@if(session()->has('cowmessage'))
+	<div class="is-success" id="cowmessage">
+		{{ session()->get('cowmessage') }}
 	</div>
 @endif
 <div class="columns">
@@ -44,8 +44,8 @@
 
 <script>
 	setTimeout(function(){
-	  if ($('#message').length > 0) {
-	    $('#message').remove();
+	  if ($('#cowmessage').length > 0) {
+	    $('#cowmessage').remove();
 	  }
 	}, 2000)
 </script>

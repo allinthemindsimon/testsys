@@ -15,7 +15,7 @@ class CowController extends Controller
      */
     public function index()
     {
-        $cows = Cow::pluck('name', 'id');
+        $cows = Cow::orderBy('name')->pluck('name', 'id');
         return view('cows.index', ['cows' => $cows]);
     }
 
@@ -41,7 +41,7 @@ class CowController extends Controller
             'name' => $request['name'],
         ]);
         if ($cow) {
-            return redirect('/cow/create')->with('message', 'Successfully added');
+            return redirect('/cow/create')->with('cowmessage', $request['name'].' successfully added');
         }
     }
 
