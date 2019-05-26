@@ -3,7 +3,6 @@
 @section("content")
 <style>
     .temp {
-        /*color:green;*/
         font-size: 1.5em;
     }
     .vabot {
@@ -95,6 +94,8 @@
     </div>
 </form>
 
+<hr>
+
 <script>
     setTimeout(function(){
         if ($('.temp').length > 0) {
@@ -104,8 +105,8 @@
 
     $(".lactose").change(function() {
         this.value = parseFloat(this.value).toFixed(3);
-        if (this.value <= 0) {
-            alert ("Please enter a positive number for the amount of milk");
+        if (this.value < 0) {
+            alert ("Please enter zero or a positive number for the amount of milk");
             this.value = 0.000;
         }
     });

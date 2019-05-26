@@ -13,6 +13,7 @@
 </style>
 
 <hr>
+
 <div class="columns">
     <div class="column">
         @if ($yields)
@@ -43,4 +44,3 @@
 <hr>
 
 @endsection
-{{-- body > section:nth-child(3) > table > thead > tr > th:nth-child(5) --}}

@@ -3,12 +3,12 @@
 @section("content")
 <style>
 	#cowmessage {
-		/*color:green;*/
 		font-size: 1.5em;
 	}
 </style>
 
 <hr>
+
 @if(session()->has('cowmessage'))
 	<div class="message is-success" id="cowmessage">
 		{{ session()->get('cowmessage') }}

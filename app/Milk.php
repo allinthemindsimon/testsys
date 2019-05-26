@@ -11,7 +11,6 @@ class Milk extends Model
         'cow_id'
     ];
 
-
     public function cow()
     {
         return $this->belongsTo("App\Cow");
