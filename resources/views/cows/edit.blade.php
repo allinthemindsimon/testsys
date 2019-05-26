@@ -82,7 +82,7 @@
             <div class="field">
                 <label class="label">Amount in Litres</label>
                 <div class="control">
-                    <input class="input lactose" name ="amount_litres" type="number" step="1">
+                    <input class="input lactose" name ="amount_litres" type="number" step="1" min=0>
                 </div>
             </div>
         </div>
