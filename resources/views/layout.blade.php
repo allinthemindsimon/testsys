@@ -8,6 +8,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
         <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <style>
+            h1 {
+                font-size: 1.5em;
+            }
+        </style>
     </head>
     <body class="container">
         <section class="section">
@@ -22,6 +27,9 @@
                 </div>
                 <div class="column is-2">
                     <a href="/cow/create" class="button is-link">Add Cows</a>
+                </div>
+                <div class="column is-2">
+                    <a href="/report" class="button is-link">Reports</a>
                 </div>
             </div>
         </section>

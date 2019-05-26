@@ -10,4 +10,10 @@ class Milk extends Model
         'amount_litres',
         'cow_id'
     ];
+
+
+    public function cow()
+    {
+        return $this->belongsTo("App\Cow");
+    }
 }
