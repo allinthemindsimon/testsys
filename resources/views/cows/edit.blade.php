@@ -3,7 +3,7 @@
 @section("content")
 <style>
     .temp {
-        color:green;
+        /*color:green;*/
         font-size: 1.5em;
     }
     .vabot {
@@ -71,8 +71,8 @@
 <hr>
 
 @if(session()->has('milkmessage'))
-    <div class="is-success temp" id="milkmessage">
-        {{ session()->get('milkmessage') }}
+    <div class="{{ session()->get('class') }} temp" id="milkmessage">
+        <p>{{ session()->get('milkmessage') }}</p>
     </div>
 @endif
 <form method="POST" action="/milk/{{$cowDetails['id']}}/store">
@@ -100,7 +100,7 @@
         if ($('.temp').length > 0) {
             $('.temp').remove();
         }
-    }, 2500)
+    }, 3500)
 
     $(".lactose").change(function() {
         this.value = parseFloat(this.value).toFixed(3);
