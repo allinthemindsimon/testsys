@@ -43,7 +43,7 @@ class CowController extends Controller
         $chosenCow->name = $request->name;
         $chosenCow->save();
         if ($chosenCow) {
-            return redirect('/cow/'.$request->id.'/edit')->with('message', 'Name successfully changed');
+            return redirect('/cow/'.$request->id.'/edit')->with('cowmessage', 'Name successfully changed');
         }
     }
 }

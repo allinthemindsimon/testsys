@@ -13,8 +13,8 @@
 <hr>
 
 @if(session()->has('cowmessage'))
-    <div class="is-success temp" id="cowmessage">
-        {{ session()->get('cowmessage') }}
+    <div class="message is-success temp" id="cowmessage">
+        <p>{{ session()->get('cowmessage') }}</p>
     </div>
 @endif
 <form method="POST" action="/cow/{{$cowDetails['id']}}/update">
