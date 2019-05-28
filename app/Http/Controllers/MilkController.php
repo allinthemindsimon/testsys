@@ -13,12 +13,11 @@ class MilkController extends Controller
     public function store(MilkRequest $request, Cow $id)
     {
         //I'm sure this can be neater, I'm looking for an 'if_exists' Laravel method or validator
-        $r = $request->all();
         $checkday = Milk::whereRaw("DATE(created_at) = DATE(NOW())")->where('cow_id', '=', $id->id)->get();
         $milk = '';
         if (empty($checkday->toArray())) {
             $milk = Milk::create([
-                'amount_litres' => $r['amount_litres'],
+                'amount_litres' => $request->amount_litres,
                 'cow_id' => $id->id
             ]);
         } else {
@@ -27,12 +26,11 @@ class MilkController extends Controller
                 'class' => 'notification is-danger'
             ]);
         }
-        $cowDetails = Cow::findOrFail($id->id);
         if ($milk) {
             return redirect('/cow/'.$id->id.'/edit')->with([
-                'milkmessage' => $r['amount_litres'].' litres of milk was successfully added',
+                'milkmessage' => $request->amount_litres.' litres of milk was successfully added',
                 'class' => 'message is-success',
-                'cowDetails' => $cowDetails,
+                'cowDetails' => $id,
             ]);
         }
     }
