@@ -24,8 +24,7 @@ class MilkRequest extends FormRequest
     public function rules()
     {
         return [
-            'amount_litres'  => 'required|max:150|gte:0',
-            'cow_id'  => 'required|exists:cows,id'
+            'amount_litres'  => 'required|max:150|gte:0'
         ];
     }
 

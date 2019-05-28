@@ -10,25 +10,26 @@ use App\Http\Requests\MilkRequest;
 class MilkController extends Controller
 {
 
-    public function store(MilkRequest $request)
+    public function store(MilkRequest $request, Cow $id)
     {
+        //I'm sure this can be neater, I'm looking for an 'if_exists' Laravel method or validator
         $r = $request->all();
-        $checkday = Milk::whereRaw("DATE(created_at) = DATE(NOW())")->where('cow_id', '=', $r['cow_id'])->get();
+        $checkday = Milk::whereRaw("DATE(created_at) = DATE(NOW())")->where('cow_id', '=', $id->id)->get();
         $milk = '';
         if (empty($checkday->toArray())) {
             $milk = Milk::create([
                 'amount_litres' => $r['amount_litres'],
-                'cow_id' => $r['cow_id']
+                'cow_id' => $id->id
             ]);
         } else {
-            return redirect('/cow/'.$r['cow_id'].'/edit')->with([
+            return redirect('/cow/'.$id->id.'/edit')->with([
                 'milkmessage' => 'This cow\'s daily milk yield has already been submitted',
                 'class' => 'notification is-danger'
             ]);
         }
-        $cowDetails = Cow::findOrFail($r['cow_id']);
+        $cowDetails = Cow::findOrFail($id->id);
         if ($milk) {
-            return redirect('/cow/'.$r['cow_id'].'/edit')->with([
+            return redirect('/cow/'.$id->id.'/edit')->with([
                 'milkmessage' => $r['amount_litres'].' litres of milk was successfully added',
                 'class' => 'message is-success',
                 'cowDetails' => $cowDetails,

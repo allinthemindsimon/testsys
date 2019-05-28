@@ -33,7 +33,6 @@
                 <label class="label">Cow Number</label>
                 <div class="control">
                     <input class="input" name ="iddetails" type="text" value="{{$cowDetails['id']}}" disabled>
-                    <input class="input" name ="id" type="hidden" value="{{$cowDetails['id']}}">
                 </div>
             </div>
         </div>
@@ -82,7 +81,7 @@
             <div class="field">
                 <label class="label">Amount in Litres</label>
                 <div class="control">
-                    <input class="input lactose" name ="amount_litres" type="number" step="1" min=0>
+                    <input class="input lactose" name ="amount_litres" type="number" step="0.001" min=0>
                 </div>
             </div>
         </div>

@@ -31,7 +31,8 @@ class CowRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => "I'm sorry but the name canot be longer than 150 characters",
+            'name.required' => "The name of the cow is required",
+            'name.max' => "I'm sorry but the name canot be longer than 150 characters",
             'name.unique' => "That name is unavailable, please try another"
         ];
     }

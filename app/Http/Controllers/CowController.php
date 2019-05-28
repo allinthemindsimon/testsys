@@ -25,25 +25,24 @@ class CowController extends Controller
         $cow = Cow::create([
             'name' => $request['name'],
         ]);
-        if ($cow) {
+        if ($cow->wasRecentlyCreated) {  //not sure there is any need for a check here but first time I've used ->wRC 
             return redirect('/cow/create')->with('cowmessage', $request['name'].' successfully added');
         }
     }
 
     public function edit(Cow $id)
     {
-        $cowDetails = $id->toArray();
-        $cowDetails['clean_date'] = date_format($id->created_at, 'd/m/Y');
-        return view('cows.edit', ['cowDetails' => $cowDetails]);
+        $date = date_format($id->created_at, 'd/m/Y');
+        $id->clean_date = $date;
+        return view('cows.edit', ['cowDetails' => $id]);
     }
 
-    public function update(CowRequest $request, Cow $cow)
+    public function update(CowRequest $request, Cow $id)
     {
-        $chosenCow = Cow::findOrFail($request->id);
-        $chosenCow->name = $request->name;
-        $chosenCow->save();
-        if ($chosenCow) {
-            return redirect('/cow/'.$request->id.'/edit')->with('cowmessage', 'Name successfully changed');
+        $id->name = $request->name;
+        $id->save();
+        if ($id) {
+            return redirect('/cow/'.$id->id.'/edit')->with('cowmessage', 'Name successfully changed');
         }
     }
 }
