@@ -18,6 +18,7 @@ class ReportController extends Controller
                 cow_id,
                 DATE_FORMAT(cows.created_at, '%d/%m/%Y') AS arrived,
                 FORMAT(AVG(amount_litres), 3) AS average,
+                AVG(amount_litres) AS averageDirty,
                 FORMAT(MAX(amount_litres), 3) AS maximum
             FROM
                 milks
@@ -26,7 +27,7 @@ class ReportController extends Controller
             GROUP BY cow_id
         ");
         $cows = collect($cows);
-        return view('reports.index', ['cows' => $cows->sortByDesc('average')]);
+        return view('reports.index', ['cows' => $cows->sortByDesc('averageDirty')]);
     }
 
     public function show($id)

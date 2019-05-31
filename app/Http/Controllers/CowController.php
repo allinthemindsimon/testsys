@@ -25,7 +25,7 @@ class CowController extends Controller
         $cow = Cow::create([
             'name' => $request['name'],
         ]);
-        if ($cow->wasRecentlyCreated) {  //not sure there is any need for a check here but first time I've used ->wRC 
+        if ($cow->wasRecentlyCreated) {  //not sure there is any need for a check here but first time I've used ->wRC
             return redirect('/cow/create')->with('cowmessage', $request['name'].' successfully added');
         }
     }
